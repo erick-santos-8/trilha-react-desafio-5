@@ -12,10 +12,17 @@ export const getPosts = async () => {
 
 export const getPostBySlug = async (id) => {
     const posts = await getPosts();
-    const post = posts.filter(data => data.id === id);
+    let post = {};
+
+    posts.map(data => {
+        if(data.id === id){
+            post = data;
+        }
+    })
+
     console.log(post)
     if (post){
-        return post[0]
+        return post;
     }
         return {}
     }
